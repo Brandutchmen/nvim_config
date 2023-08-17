@@ -157,6 +157,7 @@ local plugins = {
   },
   -- To use a extras plugin
   -- { import = "custom.configs.extras.symbols-outline", },
+  }
 }
 
 return plugins
