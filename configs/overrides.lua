@@ -12,6 +12,9 @@ M.treesitter = {
     "c",
     "markdown",
     "markdown_inline",
+    "php",
+    "go",
+    "rust"
   },
   indent = {
     enable = true,
@@ -23,20 +26,62 @@ M.treesitter = {
 
 M.mason = {
   ensure_installed = {
-    -- lua stuff
+    -- markdown
+    "marksman",
+    "misspell",
+
+    -- lua
     "lua-language-server",
     "stylua",
 
-    -- web dev stuff
+    -- web dev
     "css-lsp",
     "html-lsp",
     "typescript-language-server",
     "deno",
-    "prettier",
 
-    -- c/cpp stuff
-    "clangd",
-    "clang-format",
+    -- docker
+    "dockerfile-language-server",
+    "docker-compose-language-service",
+
+    -- rust
+    "rust-analyzer",
+    "rustfmt",
+
+    -- go
+    "gopls",
+    "glint",
+    "go-debug-adapter",
+    "goimports",
+    "goimports-reviser",
+    "golangci-lint",
+    "golangci-lint-langserver",
+    "golines",
+    "gotests",
+    "gotestsum",
+
+    -- python
+    "pyright",
+    "flake8",
+    "black",
+    "mypy",
+    "pydocstyle",
+    "pylint",
+    "pyre",
+    "autoflake",
+    "autopep8",
+    "python-lsp-server",
+
+    -- yaml
+    "terraform-ls",
+    "tflint",
+    "yaml-language-server",
+    "yamlfmt",
+    "yamllint",
+
+    -- sql
+    "sqlfluff",
+    "sqls",
   },
 }
 
@@ -53,6 +98,14 @@ M.nvimtree = {
         git = true,
       },
     },
+  },
+}
+
+M.copilot = {
+  -- Possible configurable fields can be found on:
+  -- https://github.com/zbirenbaum/copilot.lua#setup-and-configuration
+  suggestion = {
+    auto_trigger = true,
   },
 }
 

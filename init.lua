@@ -5,3 +5,8 @@
 --   pattern = "*",
 --   command = "tabdo wincmd =",
 -- })
+--
+
+vim.wo.relativenumber = true
+-- copilot.lua
+-- vim.g.copilot_assume_mapped = true
