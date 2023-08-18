@@ -60,53 +60,57 @@ local plugins = {
       end)
     end,
   },
-   ["m4xshen/autoclose.nvim"] = {
-      event = "BufEnter",
-      config = function()
-        require("autoclose").setup()
-      end,
-    },
-    -- To make a plugin not be loaded
-    -- {
-    --   "NvChad/nvim-colorizer.lua",
-    --   enabled = false
-    -- },
+  ["m4xshen/autoclose.nvim"] = {
+    event = "BufEnter",
+    config = function()
+      require("autoclose").setup()
+    end,
+  },
+  -- To make a plugin not be loaded
+  -- {
+  --   "NvChad/nvim-colorizer.lua",
+  --   enabled = false
+  -- },
 
-    -- All NvChad plugins are lazy-loaded by default
-    -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
-    -- If you want a plugin to load on startup, add `lazy = false` to a plugin spec, for example
-    -- {
-    --   "mg979/vim-visual-multi",
-    --   lazy = false,
-    -- }
-    {
-      "zbirenbaum/copilot.lua",
-      event = "InsertEnter",
-      opts = overrides.copilot,
-    },
-    {
-      "hrsh7th/nvim-cmp",
-      dependencies = {
-        {
-          "zbirenbaum/copilot-cmp",
-          config = function()
-            require("copilot_cmp").setup()
-          end,
-        },
-      },
-      opts = {
-        sources = {
-          { name = "nvim_lsp", group_index = 2 },
-          { name = "copilot", group_index = 2 },
-          { name = "luasnip", group_index = 2 },
-          { name = "buffer", group_index = 2 },
-          { name = "nvim_lua", group_index = 2 },
-          { name = "path", group_index = 2 },
-        },
+  -- All NvChad plugins are lazy-loaded by default
+  -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
+  -- If you want a plugin to load on startup, add `lazy = false` to a plugin spec, for example
+  -- {
+  --   "mg979/vim-visual-multi",
+  --   lazy = false,
+  -- }
+  {
+    "zbirenbaum/copilot.lua",
+    event = "InsertEnter",
+    opts = overrides.copilot,
+  },
+  {
+    "ThePrimeagen/vim-be-good",
+    lazy = false,
+  },
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      {
+        "zbirenbaum/copilot-cmp",
+        config = function()
+          require("copilot_cmp").setup()
+        end,
       },
     },
-    -- To use a extras plugin
-    -- { import = "custom.configs.extras.symbols-outline", },
+    opts = {
+      sources = {
+        { name = "nvim_lsp", group_index = 2 },
+        { name = "copilot", group_index = 2 },
+        { name = "luasnip", group_index = 2 },
+        { name = "buffer", group_index = 2 },
+        { name = "nvim_lua", group_index = 2 },
+        { name = "path", group_index = 2 },
+      },
+    },
+  },
+  -- To use a extras plugin
+  -- { import = "custom.configs.extras.symbols-outline", },
 }
 
 return plugins
