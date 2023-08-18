@@ -10,6 +10,7 @@ M.ui = {
 
   hl_override = highlights.override,
   hl_add = highlights.add,
+  transparency = false,
 }
 
 M.plugins = "custom.plugins"

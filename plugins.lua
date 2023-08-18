@@ -51,113 +51,113 @@ local plugins = {
   ["williamboman/nvim-lsp-installer"] = {
     event = "BufRead",
     config = function()
-      local lsp_installer = require("nvim-lsp-installer")
+      local lsp_installer = require "nvim-lsp-installer"
 
-        lsp_installer.on_server_ready(function(server)
+      lsp_installer.on_server_ready(function(server)
         local opts = {}
         server:setup(opts)
-        vim.cmd([[ do User LspAttachBuffers ]])
+        vim.cmd [[ do User LspAttachBuffers ]]
       end)
     end,
 
-["zbirenbaum/copilot.lua"] = {
-    cmd = "Copilot",
-    event = {"InsertEnter", "BufEnter", "BufRead"},
-    config = function()
-      require("copilot").setup({
-        panel = {
-          enabled = true,
-          auto_refresh = true,
-          keymap = {
-            jump_prev = "[[",
-            jump_next = "]]",
-            accept = "<CR>",
-            refresh = "gr",
-            open = "<M-CR>"
+    ["zbirenbaum/copilot.lua"] = {
+      cmd = "Copilot",
+      event = { "InsertEnter", "BufEnter", "BufRead" },
+      config = function()
+        require("copilot").setup {
+          panel = {
+            enabled = true,
+            auto_refresh = true,
+            keymap = {
+              jump_prev = "[[",
+              jump_next = "]]",
+              accept = "<CR>",
+              refresh = "gr",
+              open = "<M-CR>",
+            },
+            layout = {
+              position = "bottom", -- | top | left | right
+              ratio = 0.4,
+            },
           },
-          layout = {
-            position = "bottom", -- | top | left | right
-            ratio = 0.4
+          suggestion = {
+            enabled = true,
+            auto_accept = true,
+            auto_trigger = true,
+            debounce = 75,
+            keymap = {
+              accept = "<Tab>",
+              accept_word = false,
+              accept_line = false,
+              next = "<M-]>",
+              prev = "<M-[>",
+              dismiss = "<C-]>",
+            },
           },
-        },
-        suggestion = {
-          enabled = true,
-          auto_accept = true,
-          auto_trigger = true,
-          debounce = 75,
-          keymap = {
-            accept = "<Tab>",
-            accept_word = false,
-            accept_line = false,
-            next = "<M-]>",
-            prev = "<M-[>",
-            dismiss = "<C-]>",
+          filetypes = {
+            yaml = false,
+            markdown = false,
+            help = false,
+            gitcommit = false,
+            gitrebase = false,
+            hgcommit = false,
+            svn = false,
+            cvs = false,
+            ["."] = false,
           },
-        },
-        filetypes = {
-          yaml = false,
-          markdown = false,
-          help = false,
-          gitcommit = false,
-          gitrebase = false,
-          hgcommit = false,
-          svn = false,
-          cvs = false,
-          ["."] = false,
-        },
-        copilot_node_command = 'node', -- Node.js version must be > 16.x
-        server_opts_overrides = {},
-      })
-    end,
-  },
-  ["m4xshen/autoclose.nvim"] = {
-    event = "BufEnter",
-    config = function()
-      require("autoclose").setup()
-    end,
-  },
-  -- To make a plugin not be loaded
-  -- {
-  --   "NvChad/nvim-colorizer.lua",
-  --   enabled = false
-  -- },
+          copilot_node_command = "node", -- Node.js version must be > 16.x
+          server_opts_overrides = {},
+        }
+      end,
+    },
+    ["m4xshen/autoclose.nvim"] = {
+      event = "BufEnter",
+      config = function()
+        require("autoclose").setup()
+      end,
+    },
+    -- To make a plugin not be loaded
+    -- {
+    --   "NvChad/nvim-colorizer.lua",
+    --   enabled = false
+    -- },
 
-  -- All NvChad plugins are lazy-loaded by default
-  -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
-  -- If you want a plugin to load on startup, add `lazy = false` to a plugin spec, for example
-  -- {
-  --   "mg979/vim-visual-multi",
-  --   lazy = false,
-  -- }
-  {
-    "zbirenbaum/copilot.lua",
-    event = "InsertEnter",
-    opts = overrides.copilot,
-  },
-  {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      {
-        "zbirenbaum/copilot-cmp",
-        config = function()
-          require("copilot_cmp").setup()
-        end,
+    -- All NvChad plugins are lazy-loaded by default
+    -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
+    -- If you want a plugin to load on startup, add `lazy = false` to a plugin spec, for example
+    -- {
+    --   "mg979/vim-visual-multi",
+    --   lazy = false,
+    -- }
+    -- {
+    --   "zbirenbaum/copilot.lua",
+    --   event = "InsertEnter",
+    --   opts = overrides.copilot,
+    -- },
+    {
+      "hrsh7th/nvim-cmp",
+      dependencies = {
+        {
+          "zbirenbaum/copilot-cmp",
+          config = function()
+            require("copilot_cmp").setup()
+          end,
+        },
+      },
+      opts = {
+        sources = {
+          { name = "nvim_lsp", group_index = 2 },
+          { name = "copilot", group_index = 2 },
+          { name = "luasnip", group_index = 2 },
+          { name = "buffer", group_index = 2 },
+          { name = "nvim_lua", group_index = 2 },
+          { name = "path", group_index = 2 },
+        },
       },
     },
-    opts = {
-      sources = {
-        { name = "nvim_lsp", group_index = 2 },
-        { name = "copilot", group_index = 2 },
-        { name = "luasnip", group_index = 2 },
-        { name = "buffer", group_index = 2 },
-        { name = "nvim_lua", group_index = 2 },
-        { name = "path", group_index = 2 },
-      },
-    },
+    -- To use a extras plugin
+    -- { import = "custom.configs.extras.symbols-outline", },
   },
-  -- To use a extras plugin
-  -- { import = "custom.configs.extras.symbols-outline", },
-  }
 }
 
 return plugins

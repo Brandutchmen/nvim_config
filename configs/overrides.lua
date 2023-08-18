@@ -7,20 +7,15 @@ M.treesitter = {
     "html",
     "css",
     "javascript",
-    "typescript",
-    "tsx",
     "c",
     "markdown",
     "markdown_inline",
-    "php",
+    "python",
     "go",
-    "rust"
+    "rust",
   },
   indent = {
     enable = true,
-    -- disable = {
-    --   "python"
-    -- },
   },
 }
 
