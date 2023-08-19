@@ -36,11 +36,11 @@ null_ls.setup {
 
 
 -- add autocmds to run formatting on save for .go, .rs, and .py files
--- vim.cmd([[
---   augroup null_ls_formatting
---     autocmd!
---     autocmd BufWritePre *.go lua vim.lsp.buf.format((nil, 1000)
---     autocmd BufWritePre *.rs lua vim.lsp.buf.format((nil, 1000)
---     autocmd BufWritePre *.py lua vim.lsp.buf.format((nil, 1000)
---   augroup END
--- ]])
+vim.cmd([[
+  augroup null_ls_formatting
+    autocmd!
+    autocmd BufWritePre *.go lua vim.lsp.buf.format((nil, 1000)
+    autocmd BufWritePre *.rs lua vim.lsp.buf.format((nil, 1000)
+    autocmd BufWritePre *.py lua vim.lsp.buf.format((nil, 1000)
+  augroup END
+]])
