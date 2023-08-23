@@ -83,6 +83,10 @@ local plugins = {
     "zbirenbaum/copilot.lua",
     event = "InsertEnter",
     opts = overrides.copilot,
+    cmd = "Copilot",
+    config = function()
+      require("copilot").setup()
+    end,
   },
   {
     "ThePrimeagen/vim-be-good",
