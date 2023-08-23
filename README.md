@@ -1,3 +1,13 @@
+# Installation
+
+`rm -rf ~/.config/nvim/lua/custom`
+
+`git clone -b v2.0_featureful https://github.com/brandutchmen/nvim_config.git ~/.config/nvim/lua/custom --depth 1`
+
+
+
+
+
 # Example_config
 
 This can be used as an example custom config for NvChad, this branch is a minimal one. Do check the feature_full branch if you need all the ease in your config.
