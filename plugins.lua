@@ -67,10 +67,9 @@ local plugins = {
     end,
   },
   -- To make a plugin not be loaded
-  -- {
-  --   "NvChad/nvim-colorizer.lua",
-  --   enabled = false
-  -- },
+  {
+    "NvChad/nvim-colorizer.lua",
+  },
 
   -- All NvChad plugins are lazy-loaded by default
   -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
@@ -79,6 +78,39 @@ local plugins = {
   --   "mg979/vim-visual-multi",
   --   lazy = false,
   -- }
+  {
+    "tzachar/highlight-undo.nvim",
+  },
+  {
+    "ibhagwan/fzf-lua",
+    -- optional for icon support
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      -- calling `setup` is optional for customization
+      require("fzf-lua").setup {}
+    end,
+  },
+  {
+    "tzachar/local-highlight.nvim",
+    config = function()
+      require("local-highlight").setup {}
+    end,
+  },
+  {
+    "folke/todo-comments.nvim",
+    event = "BufRead",
+    config = function()
+      require("todo-comments").setup()
+    end,
+  },
+  {
+    "folke/trouble.nvim",
+    cmd = "TroubleToggle",
+  },
+  {
+    "folke/twilight.nvim",
+    cmd = "Twilight",
+  },
   {
     "zbirenbaum/copilot.lua",
     event = "InsertEnter",
@@ -104,11 +136,11 @@ local plugins = {
     },
     opts = {
       sources = {
-        { name = "nvim_lsp", group_index = 2 },
+        { name = "nvim_lsp", group_index = 1 },
         { name = "copilot", group_index = 2 },
-        { name = "luasnip", group_index = 2 },
-        { name = "buffer", group_index = 2 },
-        { name = "nvim_lua", group_index = 2 },
+        { name = "luasnip", group_index = 3 },
+        { name = "buffer", group_index = 3 },
+        { name = "nvim_lua", group_index = 3 },
         { name = "path", group_index = 2 },
       },
     },
