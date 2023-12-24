@@ -8,6 +8,14 @@ autocmd("VimResized", {
 --
 
 vim.wo.relativenumber = true
+
+-- additional filetypes
+vim.filetype.add({
+ extension = {
+  templ = "templ",
+ },
+})
+
 -- copilot.lua
 -- vim.g.copilot_assume_mapped = true
 
