@@ -62,4 +62,6 @@ vim.api.nvim_set_keymap("n", "<leader>tn", ":lua require('neotest').jump.next({ 
 
 vim.api.nvim_set_keymap("n", "<leader>tp", ":lua require('neotest').jump.prev({ status = 'failed' } )<CR>", { silent = true, desc = "Jump to previous failed test"})
 
-
+vim.api.nvim_set_keymap("n", "<leader>tl", ":lua require('neotest').output.toggle()<CR>", { silent = true, desc = "Toggle test output panel"})
+-- watch
+vim.api.nvim_set_keymap("n", "<leader>tw", ":lua require('neotest').watch.toggle()<CR>", { silent = true, desc = "Toggle test watch panel"})
