@@ -125,6 +125,42 @@ local plugins = {
     lazy = false,
   },
   {
+    "akinsho/flutter-tools.nvim",
+    lazy = false,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "stevearc/dressing.nvim", -- optional for vim.ui.select
+    },
+    config = true,
+  },
+  {
+    "nvim-neotest/neotest",
+    lazy = true,
+
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-neotest/neotest-go",
+      "olimorris/neotest-phpunit",
+    },
+    config = function()
+      require("neotest").setup {
+        adapters = {
+          require "neotest-phpunit" {
+            phpunit_cmd = function()
+              return "./laravel-sail-helper"
+            end,
+            filter_dirs = function()
+              return { "vendor" }
+            end,
+          },
+          require "neotest-go"
+        },
+      }
+    end,
+  },
+  {
     "hrsh7th/nvim-cmp",
     dependencies = {
       {

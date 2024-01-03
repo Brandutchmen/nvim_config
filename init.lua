@@ -19,3 +19,47 @@ vim.filetype.add({
 -- copilot.lua
 -- vim.g.copilot_assume_mapped = true
 
+-- The interface for using neotest is very simple.
+--
+-- Run the nearest test
+--
+-- require("neotest").run.run()
+-- Run the current file
+--
+-- require("neotest").run.run(vim.fn.expand("%"))
+--
+-- Stop the nearest test, see :h neotest.run.stop()
+--
+-- require("neotest").run.stop()
+-- Attach to the nearest test, see :h neotest.run.attach()
+--
+-- require("neotest").run.attach()
+
+vim.api.nvim_set_keymap("n", "<leader>tt", ":lua require('neotest').run.run()<CR>", { noremap = true, silent = true, desc = "Run nearest test"})
+
+vim.api.nvim_set_keymap("n", "<leader>tf", ":lua require('neotest').run.run(vim.fn.expand('%'))<CR>", { noremap = true, silent = true, desc = "Test current file"})
+
+vim.api.nvim_set_keymap("n", "<leader>tx", ":lua require('neotest').run.stop()<CR>", { noremap = true, silent = true, desc = "Stop current test"})
+
+vim.api.nvim_set_keymap("n", "<leader>tA", ":lua require('neotest').run.attach()<CR>", { noremap = true, silent = true, desc = "Attach to test"})
+
+--Run full test suite
+vim.api.nvim_set_keymap("n", "<leader>ta", ":lua require('neotest').run.run(vim.fn.getcwd())<CR>", { noremap = true, silent = true, desc = "Run all tests in suite"})
+
+-- Run tests in directory
+
+vim.api.nvim_set_keymap("n", "<leader>tD", ":lua require('neotest').run.run(vim.fn.expand('%:p:h'))<CR>", { noremap = true, silent = true, desc = "Run all tests in directory"})
+
+vim.api.nvim_set_keymap("n", "<leader>to", ":lua require('neotest').output.open()<CR>", { noremap = true, silent = true, desc = "Open test output"})
+
+vim.api.nvim_set_keymap("n", "<leader>tO", ":lua require('neotest').output.open({ enter = true })<CR>", { noremap = true, silent = true, desc = "Open test output and enter insert mode"})
+
+-- open summary
+vim.api.nvim_set_keymap("n", "<leader>ts", ":lua require('neotest').summary.toggle()<CR>", { noremap = true, silent = true, desc = "Toggle test summary"})
+
+-- jump to failed test
+vim.api.nvim_set_keymap("n", "<leader>tn", ":lua require('neotest').jump.next({ status = 'failed' } )<CR>", { silent = true, desc = "Jump to next failed test"})
+
+vim.api.nvim_set_keymap("n", "<leader>tp", ":lua require('neotest').jump.prev({ status = 'failed' } )<CR>", { silent = true, desc = "Jump to previous failed test"})
+
+
