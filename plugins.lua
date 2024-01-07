@@ -142,20 +142,25 @@ local plugins = {
       "antoinemadec/FixCursorHold.nvim",
       "nvim-treesitter/nvim-treesitter",
       "nvim-neotest/neotest-go",
+      "nvim-neotest/neotest-vim-test",
       "olimorris/neotest-phpunit",
+      "vim-test/vim-test"
     },
     config = function()
       require("neotest").setup {
         adapters = {
-          require "neotest-phpunit" {
-            phpunit_cmd = function()
-              return "./laravel-sail-helper"
-            end,
-            filter_dirs = function()
-              return { "vendor" }
-            end,
-          },
-          require "neotest-go"
+          -- require "neotest-phpunit" {
+          --   phpunit_cmd = function()
+          --     return "./laravel-sail-helper"
+          --   end,
+          --   filter_dirs = function()
+          --     return { "vendor" }
+          --   end,
+          -- },
+          require "neotest-go",
+          require("neotest-vim-test")({
+            allow_file_types = { "php", 'sail' }
+          })
         },
       }
     end,
