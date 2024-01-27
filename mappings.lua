@@ -8,12 +8,17 @@ M.general = {
 }
 
 -- Extras example
--- M.symbols_outline = {
---   n = {
---     ["<leader>cs"] = { "<cmd>SymbolsOutline<cr>", "Symbols Outline" },
---   },
--- }
+M.symbols_outline = {
+  n = {
+    ["<leader>cs"] = { "<cmd>SymbolsOutline<cr>", "Symbols Outline" },
+  },
+}
 
 -- more keybinds!
 
+M.todo = {
+  n = {
+    ["<leader>ft"] = { "<cmd>:TodoTelescope<cr>", "Find todos" },
+  },
+}
 return M
