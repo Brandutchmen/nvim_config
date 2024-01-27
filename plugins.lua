@@ -80,6 +80,25 @@ local plugins = {
   -- }
   {
     "tzachar/highlight-undo.nvim",
+    opts = {
+      duration = 300,
+      undo = {
+        hlgroup = "HighlightUndo",
+        mode = "n",
+        lhs = "u",
+        map = "undo",
+        opts = {},
+      },
+      redo = {
+        hlgroup = "HighlightUndo",
+        mode = "n",
+        lhs = "<C-r>",
+        map = "redo",
+        opts = {},
+      },
+      highlight_for_count = true,
+    },
+    lazy = false,
   },
   {
     "ibhagwan/fzf-lua",
@@ -144,7 +163,7 @@ local plugins = {
       "nvim-neotest/neotest-go",
       "nvim-neotest/neotest-vim-test",
       "olimorris/neotest-phpunit",
-      "vim-test/vim-test"
+      "vim-test/vim-test",
     },
     config = function()
       require("neotest").setup {
@@ -158,9 +177,9 @@ local plugins = {
           --   end,
           -- },
           require "neotest-go",
-          require("neotest-vim-test")({
-            allow_file_types = { "php", 'sail' }
-          })
+          require "neotest-vim-test" {
+            allow_file_types = { "php", "sail" },
+          },
         },
       }
     end,
