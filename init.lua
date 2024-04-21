@@ -65,3 +65,5 @@ vim.api.nvim_set_keymap("n", "<leader>tp", ":lua require('neotest').jump.prev({ 
 vim.api.nvim_set_keymap("n", "<leader>tl", ":lua require('neotest').output.toggle()<CR>", { silent = true, desc = "Toggle test output panel"})
 -- watch
 vim.api.nvim_set_keymap("n", "<leader>tw", ":lua require('neotest').watch.toggle()<CR>", { silent = true, desc = "Toggle test watch panel"})
+
+vim.api.nvim_set_keymap("n", "gx", ":silent execute '!open ' . shellescape(expand('<cfile>'), 1)<CR>", { silent = true, desc = "Open link or file with system default program"})
