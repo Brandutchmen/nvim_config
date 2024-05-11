@@ -155,12 +155,13 @@ local plugins = {
   {
     "nvim-neotest/neotest",
     lazy = true,
-
+    event = "LspAttach",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "antoinemadec/FixCursorHold.nvim",
       "nvim-treesitter/nvim-treesitter",
       "nvim-neotest/neotest-go",
+      "haydenmeade/neotest-jest",
       "nvim-neotest/neotest-vim-test",
       "olimorris/neotest-phpunit",
       "vim-test/vim-test",
@@ -176,6 +177,14 @@ local plugins = {
           --     return { "vendor" }
           --   end,
           -- },
+          require "neotest-jest" {
+            jestCommand = "npm test --",
+            jestConfigFile = "custom.jest.config.ts",
+            env = { CI = true },
+            cwd = function(path)
+              return vim.fn.getcwd()
+            end,
+          },
           require "neotest-go",
           require "neotest-vim-test" {
             allow_file_types = { "php", "sail" },
@@ -240,9 +249,26 @@ local plugins = {
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
     build = function() vim.fn["mkdp#util#install"]() end,
-  }
+  },
 
+  { "nvim-neotest/nvim-nio" },
 
+  {
+    "folke/neodev.nvim",
+    opts = {
+    }
+  },
+  -- {
+  --   "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+  --   lazy = true,
+  --   event = "VeryLazy", -- Using LSPAttach doesn't help on files where there's only a linter and no language server. DiagnosticChanged loads properly, but the plugin doesn't show anything until a save happens
+  --   config = function()
+  --     require("lsp_lines").setup()
+  --
+  --     -- https://github.com/folke/lazy.nvim/issues/620
+  --     vim.diagnostic.config({ virtual_lines = false, virtual_text = true }, require("lazy.core.config").ns)
+  --   end,
+  -- }
 }
 
 return plugins
