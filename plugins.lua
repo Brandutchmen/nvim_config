@@ -140,8 +140,8 @@ local plugins = {
     end,
   },
   {
-    "ThePrimeagen/vim-be-good",
-    lazy = false,
+    "thePrimeagen/vim-be-good",
+    cmd = "VimBeGood",
   },
   {
     "akinsho/flutter-tools.nvim",
