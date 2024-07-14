@@ -12,7 +12,8 @@ local plugins = {
     dependencies = {
       -- format & linting
       {
-        "jose-elias-alvarez/null-ls.nvim",
+        "nvimtools/none-ls.nvim",
+        event = "VeryLazy",
         config = function()
           require "custom.configs.null-ls"
         end,
@@ -249,6 +250,28 @@ local plugins = {
     opts = {
     }
   },
+  {
+    "roobert/tailwindcss-colorizer-cmp.nvim",
+    -- optionally, override the default options:
+    config = function()
+      require("tailwindcss-colorizer-cmp").setup({
+        color_square_width = 2,
+      })
+    end
+  },
+  {
+    'laytan/tailwind-sorter.nvim',
+    dependencies = {'nvim-treesitter/nvim-treesitter', 'nvim-lua/plenary.nvim'},
+    build = 'cd formatter && npm ci && npm run build',
+    config = true,
+  },
+  {
+    "windwp/nvim-ts-autotag",
+    ft = { "html", "typescript", "typescriptreact", "javascript", "javascriptreact", "svelte", "vue" },
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end
+  }
   -- {
   --   "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
   --   lazy = true,

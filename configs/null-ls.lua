@@ -1,4 +1,5 @@
 local present, null_ls = pcall(require, "null-ls")
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 if not present then
   return
@@ -9,8 +10,8 @@ local b = null_ls.builtins
 local sources = {
 
   -- webdev stuff
-  b.formatting.deno_fmt, -- choosed deno for ts/js files cuz its very fast!
-  b.formatting.prettier.with { filetypes = { "html", "markdown", "css" } }, -- so prettier works only on these filetypes
+  -- b.formatting.deno_fmt, -- choosed deno for ts/js files cuz its very fast!
+  b.formatting.prettierd,
 
   -- Lua
   b.formatting.stylua,
@@ -22,7 +23,7 @@ local sources = {
   b.formatting.black,
 
   -- rust
-  b.formatting.rustfmt,
+  -- b.formatting.rustfmt,
 
   -- go
   b.formatting.gofmt,
@@ -41,6 +42,9 @@ null_ls.setup {
 --     autocmd!
 --     autocmd BufWritePre *.go lua vim.lsp.buf.format((nil, 1000)
 --     autocmd BufWritePre *.rs lua vim.lsp.buf.format((nil, 1000)
+--     " autocmd BufWritePre *.ts lua vim.lsp.buf.format((nil, 1000)
+--     " autocmd BufWritePre *.tsx lua vim.lsp.buf.format((nil, 1000)
+--     " autocmd BufWritePre *.jsx lua vim.lsp.buf.format((nil, 1000)
 --     autocmd BufWritePre *.py lua vim.lsp.buf.format((nil, 1000)
 --   augroup END
 -- ]])
