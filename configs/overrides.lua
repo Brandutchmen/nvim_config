@@ -113,12 +113,12 @@ M.copilot = {
       open = "<C-CR>",
     },
     layout = {
-      position = "bottom", -- | top | left | right
+      position = "right", -- | top | left | right
       ratio = 0.4,
     },
   },
   suggestion = {
-    enabled = false,
+    enabled = true,
     auto_accept = true,
     auto_trigger = true,
     debounce = 50,
