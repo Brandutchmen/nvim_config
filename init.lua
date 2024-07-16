@@ -25,7 +25,7 @@ vim.filetype.add({
 })
 
 -- copilot.lua
--- vim.g.copilot_assume_mapped = true
+vim.g.copilot_assume_mapped = true
 
 -- The interface for using neotest is very simple.
 --

@@ -194,6 +194,15 @@ local plugins = {
           require("copilot_cmp").setup()
         end,
       },
+      {
+        "roobert/tailwindcss-colorizer-cmp.nvim",
+        -- optionally, override the default options:
+        config = function()
+          require("tailwindcss-colorizer-cmp").setup({
+            color_square_width = 2,
+          })
+        end
+      },
     },
     opts = {
       sources = {
@@ -201,7 +210,8 @@ local plugins = {
         { name = "luasnip",  group_index = 2 },
         { name = "buffer",   group_index = 2 },
         { name = "path",     group_index = 2 },
-        { name = "copilot",  group_index = 3 },
+        { name = "copilot",  group_index = 2 },
+        { name = "tailwind",  group_index = 2 },
         { name = "nvim_lua", group_index = 3 },
       },
     },
@@ -249,15 +259,6 @@ local plugins = {
     "folke/neodev.nvim",
     opts = {
     }
-  },
-  {
-    "roobert/tailwindcss-colorizer-cmp.nvim",
-    -- optionally, override the default options:
-    config = function()
-      require("tailwindcss-colorizer-cmp").setup({
-        color_square_width = 2,
-      })
-    end
   },
   {
     'laytan/tailwind-sorter.nvim',
