@@ -9,9 +9,17 @@ local b = null_ls.builtins
 
 local sources = {
 
+  b.code_actions.proselint,
+  b.code_actions.refactoring,
+  b.diagnostics.proselint,
+
+
+  b.code_actions.gitsigns,
+
   -- webdev stuff
   -- b.formatting.deno_fmt, -- choosed deno for ts/js files cuz its very fast!
   b.formatting.prettierd,
+
 
   -- Lua
   b.formatting.stylua,
@@ -28,9 +36,15 @@ local sources = {
   -- go
   b.formatting.gofmt,
   b.formatting.goimports,
+  b.code_actions.impl,
 
   -- php
-  b.formatting.pint
+  b.formatting.pint,
+  b.formatting.blade_formatter,
+  -- b.diagnostics.phpcs,
+  b.diagnostics.phpstan,
+
+
 }
 
 null_ls.setup {
