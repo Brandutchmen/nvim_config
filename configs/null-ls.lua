@@ -28,6 +28,9 @@ local sources = {
   -- go
   b.formatting.gofmt,
   b.formatting.goimports,
+
+  -- php
+  b.formatting.pint
 }
 
 null_ls.setup {
